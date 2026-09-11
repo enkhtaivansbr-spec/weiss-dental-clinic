@@ -76,9 +76,8 @@
 
     <script>
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxqsqJaBz02UVLBREZTKOF-GujkLxCOEYgDUKc_4KhIDibSja_8F4tVnZziOXnuXAU/exec';
-        const ADMIN_PASS = 'admin123'; // Энд эмчийн нэвтрэх нууц үгээ тохируулж болно
+        const ADMIN_PASS = 'admin123';
 
-        // Нэвтрэх шалгах
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const pass = document.getElementById('passwordInput').value;
@@ -97,7 +96,6 @@
             document.getElementById('passwordInput').value = '';
         }
 
-        // Google Sheet-ээс захиалгууд татах
         function loadBookings() {
             const tbody = document.getElementById('bookingTableBody');
             tbody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-slate-400">Ачаалж байна...</td></tr>';
