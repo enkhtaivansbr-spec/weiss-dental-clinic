@@ -61,14 +61,12 @@
       align-items: center;
     }
 
-    /* MODERN LOGO DESIGN */
+    /* LOGO DESIGN */
     .logo {
       display: flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      cursor: pointer;
-      user-select: none;
     }
 
     .logo-icon {
@@ -113,7 +111,7 @@
     .nav-contact {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 12px;
     }
 
     .phone-badge {
@@ -133,6 +131,28 @@
     .phone-badge:hover {
       background: var(--primary);
       color: white;
+    }
+
+    /* ADMIN BTN IN NAVBAR */
+    .admin-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      color: var(--gray-text);
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: 1px solid var(--gray-border);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .admin-nav-btn:hover {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
     }
 
     /* HERO SECTION */
@@ -565,8 +585,7 @@
   <!-- HEADER / NAVBAR -->
   <header>
     <div class="nav-container">
-      <!-- LOGO BUTTON TRIGGER FOR ADMIN -->
-      <div class="logo" onclick="openLoginModal()" title="Админ хэсэгт нэвтрэх">
+      <div class="logo">
         <div class="logo-icon">
           <i class="fa-solid fa-tooth"></i>
         </div>
@@ -581,6 +600,12 @@
           <i class="fa-solid fa-phone"></i>
           <span>99262480</span>
         </a>
+        
+        <!-- АДМИН ХЭСЭГТ НЭВТРЭХ ЦЭВЭРХЭН ТОВЧ -->
+        <button class="admin-nav-btn" onclick="openLoginModal()" title="Админ нэвтрэх">
+          <i class="fa-solid fa-lock"></i>
+          <span>Админ</span>
+        </button>
       </div>
     </div>
   </header>
