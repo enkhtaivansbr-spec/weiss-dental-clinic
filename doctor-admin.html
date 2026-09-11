@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEISS DENTAL - Эмчийн хяналтын хэсэг</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800">
+
+    <!-- Нэвтрэх хэсэг (Login) -->
+    <div id="loginSection" class="min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-200 w-full max-w-md text-center">
+            <span class="text-4xl">🩺</span>
+            <h2 class="text-2xl font-bold text-slate-900 mt-2 mb-1">Эмч нэвтрэх</h2>
+            <p class="text-xs text-slate-500 mb-6">WEISS DENTAL CLINIC систем</p>
+
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <input type="password" id="passwordInput" class="w-full border border-slate-200 p-3.5 rounded-xl text-sm focus:outline-sky-500 text-center tracking-widest" placeholder="Нууц үг оруулах" required />
+                </div>
+                <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-sky-600/20 text-sm">
+                    Нэвтрэх
+                </button>
+            </form>
+            <p id="loginError" class="text-xs text-rose-500 mt-3 hidden">Нууц үг буруу байна!</p>
+        </div>
+    </div>
+
+    <!-- Админ систем (Амжилттай нэвтэрсний дараа харагдана) -->
+    <div id="adminSection" class="hidden min-h-screen pb-12">
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">🦷</span>
+                    <h1 class="font-bold text-slate-900 text-lg">Захиалгын удирдлага</h1>
+                </div>
+                <button onclick="logout()" class="text-xs font-semibold text-rose-600 hover:text-rose-700 bg-rose-50 border border-rose-100 px-3 py-1.5 rounded-xl transition">
+                    Гарах
+                </button>
+            </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-6 py-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-slate-900">Ирсэн захиалгууд</h2>
+                <button onclick="loadBookings()" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1.5 rounded-xl transition">
+                    🔄 Шинэчлэх
+                </button>
+            </div>
+
+            <!-- Захиалгын хүснэгт -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-600">
+                        <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-4">Өдөр / Цаг</th>
+                                <th class="p-4">Овог Нэр</th>
+                                <th class="p-4">Утас</th>
+                                <th class="p-4">Үйлчилгээ</th>
+                                <th class="p-4">Төлөв</th>
+                                <th class="p-4">Тэмдэглэл</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingTableBody" class="divide-y divide-slate-100">
+                            <tr>
+                                <td colspan="6" class="p-6 text-center text-slate-400">Мэдээлэл уншиж байна...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxqsqJaBz02UVLBREZTKOF-GujkLxCOEYgDUKc_4KhIDibSja_8F4tVnZziOXnuXAU/exec';
+        const ADMIN_PASS = 'admin123'; // Энд эмчийн нэвтрэх нууц үгээ тохируулж болно
+
+        // Нэвтрэх шалгах
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const pass = document.getElementById('passwordInput').value;
+            if (pass === ADMIN_PASS) {
+                document.getElementById('loginSection').classList.add('hidden');
+                document.getElementById('adminSection').classList.remove('hidden');
+                loadBookings();
+            } else {
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        });
+
+        function logout() {
+            document.getElementById('adminSection').classList.add('hidden');
+            document.getElementById('loginSection').classList.remove('hidden');
+            document.getElementById('passwordInput').value = '';
+        }
+
+        // Google Sheet-ээс захиалгууд татах
+        function loadBookings() {
+            const tbody = document.getElementById('bookingTableBody');
+            tbody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-slate-400">Ачаалж байна...</td></tr>';
+
+            fetch(SCRIPT_URL + '?action=getBookings')
+            .then(res => res.json())
+            .then(data => {
+                if (!data || data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-slate-400">Захиалга одоогоор байхгүй байна.</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = data.map(b => `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-4 font-semibold text-slate-900">${b.date || ''}<br><span class="text-sky-600">${b.time || ''}</span></td>
+                        <td class="p-4 font-medium text-slate-800">${b.surname || ''} ${b.name || ''}</td>
+                        <td class="p-4">${b.phone || ''}</td>
+                        <td class="p-4"><span class="bg-sky-50 text-sky-700 px-2 py-1 rounded-lg text-[10px] font-semibold">${b.service || ''}</span></td>
+                        <td class="p-4"><span class="bg-amber-50 text-amber-700 px-2 py-1 rounded-lg text-[10px] font-semibold">${b.status || 'Хүлээгдэж буй'}</span></td>
+                        <td class="p-4 text-slate-500">${b.notes || '-'}</td>
+                    </tr>
+                `).join('');
+            })
+            .catch(err => {
+                tbody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-rose-500">Захиалга татахад алдаа гарлаа.</td></tr>';
+            });
+        }
+    </script>
+</body>
+</html>
