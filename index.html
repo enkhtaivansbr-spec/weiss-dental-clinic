@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEISS DENTAL CLINIC - Онлайн цаг захиалга</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Header / Цэс -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">🦷</span>
+                <div>
+                    <h1 class="font-bold text-slate-900 leading-none text-lg">WEISS DENTAL CLINIC</h1>
+                    <span class="text-xs text-sky-600 font-semibold">Шүдний эмнэлэг</span>
+                </div>
+            </div>
+            <!-- Эмчийн систем рүү үсрэх холбоос -->
+            <a href="doctor-admin.html" target="_blank" class="text-xs font-bold text-slate-500 hover:text-sky-600 border border-slate-200 px-3 py-1.5 rounded-xl transition">
+                🩺 Эмч нэвтрэх
+            </a>
+        </div>
+    </header>
+
+    <!-- Нүүр хэсэг -->
+    <section class="max-w-6xl mx-auto px-6 py-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+            Эрүүл инээмсэглэлийг бид бүтээнэ
+        </h2>
+        <p class="text-slate-500 text-sm md:text-base max-w-xl mx-auto mb-8">
+            Мэргэжлийн өндөр түвшний тусламж үйлчилгээг танд болон таны гэр бүлд санал болгож байна. Та онлайнаар цагаа захиалаарай.
+        </p>
+
+        <!-- Захиалгын формын контейнер -->
+        <div class="max-w-2xl mx-auto bg-white p-8 rounded-3xl shadow-xl border border-slate-100 text-left">
+            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <span>📅</span> Онлайн цаг захиалах
+            </h3>
+
+            <form id="patientBookingForm" class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Овог</label>
+                        <input type="text" name="surname" class="w-full border border-slate-200 p-3 rounded-xl text-sm focus:outline-sky-500" placeholder="Овог" required />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Нэр</label>
+                        <input type="text" name="name" class="w-full border border-slate-200 p-3 rounded-xl text-sm focus:outline-sky-500" placeholder="Нэр" required />
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Утасны дугаар</label>
+                        <input type="tel" name="phone" maxlength="8" class="w-full border border-slate-200 p-3 rounded-xl text-sm focus:outline-sky-500" placeholder="88112233" required />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Имэйл хаяг</label>
+                        <input type="email" name="email" class="w-full border border-slate-200 p-3 rounded-xl text-sm focus:outline-sky-500" placeholder="name@example.com" required />
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Өдөр сонгох</label>
+                        <input type="date" id="bookingDate" name="date" class="w-full border border-slate-200 p-3 rounded-xl text-sm focus:outline-sky-500" required />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Цаг сонгох</label>
+                        <select name="time" class="w-full border border-slate-200 p-3 rounded-xl text-sm focus:outline-sky-500" required>
+                            <option value="">Цагаа сонгоно уу</option>
+                            <option value="09:00 - 10:00">09:00 - 10:00</option>
+                            <option value="10:00 - 11:00">10:00 - 11:00</option>
+                            <option value="11:00 - 12:00">11:00 - 12:00</option>
+                            <option value="14:00 - 15:00">14:00 - 15:00</option>
+                            <option value="15:00 - 16:00">15:00 - 16:00</option>
+                            <option value="16:00 - 17:00">16:00 - 17:00</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Үйлчилгээний төрөл</label>
+                    <select name="service" class="w-full border border-slate-200 p-3 rounded-xl text-sm focus:outline-sky-500" required>
+                        <option value="Шүдний үзлэг ба зөвлөгөө">Шүдний үзлэг ба зөвлөгөө</option>
+                        <option value="Шүд цайруулах">Шүд цайруулах</option>
+                        <option value="Сувгийн эмчилгээ">Сувгийн эмчилгээ</option>
+                        <option value="Шүдний чулуу авах">Шүдний чулуу авах</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Тэмдэглэл (Заавал биш)</label>
+                    <textarea name="notes" class="w-full border border-slate-200 p-3 rounded-xl text-sm focus:outline-sky-500" rows="2" placeholder="Таньд зовиур байгаа бол бичнэ үү..."></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-sky-600/20 text-sm">
+                    Цаг захиалах
+                </button>
+            </form>
+
+            <!-- Амжилттай болсон үед харагдах мэдэгдэл -->
+            <div id="successMessage" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-center">
+                <span class="text-2xl">🎉</span>
+                <h4 class="font-bold text-emerald-800 text-sm mt-1">Цаг захиалгын хүсэлт амжилттай ирлээ!</h4>
+                <p class="text-xs text-emerald-600 mt-1">Бид таны захиалгыг шалгаад тун удахгүй баталгаажуулах болно.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Таны Google Apps Script Web App URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxqsqJaBz02UVLBREZTKOF-GujkLxCOEYgDUKc_4KhIDibSja_8F4tVnZziOXnuXAU/exec';
+
+        // Өнөөдрөөс өмнөх өдрийг сонгох боломжгүй болгох
+        document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
+
+        // Захиалга илгээх логик
+        document.getElementById('patientBookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = 'Захиалж байна...';
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+            formData.append('action', 'addBooking');
+            formData.append('status', 'Хүлээгдэж буй');
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('patientBookingForm').reset();
+                document.getElementById('successMessage').classList.remove('hidden');
+                btn.innerText = 'Цаг захиалах';
+                btn.disabled = false;
+            })
+            .catch(error => {
+                alert('Алдаа гарлаа. Та дахин оролдоно уу.');
+                btn.innerText = 'Цаг захиалах';
+                btn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
