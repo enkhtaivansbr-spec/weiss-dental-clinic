@@ -1,137 +1,342 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEISS DENTAL - Эмчийн хяналтын хэсэг</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEISS DENTAL - Админ Удирдлага</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --success: #16a34a;
+      --warning: #d97706;
+      --dark: #0f172a;
+      --gray-light: #f8fafc;
+      --border: #e2e8f0;
+      --text: #475569;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--gray-light); color: var(--dark); padding: 20px; }
+
+    /* LOGIN BOX */
+    .login-container {
+      max-width: 400px; margin: 80px auto; background: white; padding: 35px;
+      border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 1px solid var(--border);
+    }
+    .login-title { font-size: 1.5rem; font-weight: 800; text-align: center; margin-bottom: 25px; color: var(--primary); display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.85rem; color: var(--dark); }
+    .form-input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; outline: none; font-size: 0.95rem; }
+    .form-input:focus { border-color: var(--primary); }
+    .btn-login { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; font-size: 1rem; }
+    .btn-login:hover { background: var(--primary-dark); }
+
+    /* ADMIN DASHBOARD */
+    .dashboard { display: none; max-width: 1200px; margin: 0 auto; }
+    
+    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: white; padding: 16px 24px; border-radius: 12px; border: 1px solid var(--border); }
+    .admin-title { font-size: 1.4rem; font-weight: 800; color: var(--dark); }
+
+    .btn-refresh { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
+    .btn-refresh:hover { background: var(--primary-dark); }
+
+    /* TABS SYSTEM */
+    .tabs-header { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 2px; }
+    .tab-btn { padding: 12px 24px; background: transparent; border: none; font-weight: 700; font-size: 0.95rem; color: var(--text); cursor: pointer; border-bottom: 3px solid transparent; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    .tab-content { display: none; background: white; padding: 24px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+    .tab-content.active { display: block; }
+
+    /* TABLE DESIGN */
+    .table-container { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
+    th, td { padding: 14px 16px; border-bottom: 1px solid var(--border); }
+    th { background: #f1f5f9; font-weight: 700; color: var(--text); }
+    tr:hover { background: var(--gray-light); }
+
+    .badge-pending { background: #fef3c7; color: var(--warning); padding: 4px 10px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; }
+    .badge-approved { background: #dcfce7; color: var(--success); padding: 4px 10px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; }
+
+    .btn-approve { background: var(--success); color: white; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 0.8rem; }
+    .btn-approve:hover { background: #15803d; }
+
+    /* FORM FOR PHONE BOOKING */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 700px; }
+    .full-width { grid-column: span 2; }
+    .btn-submit { background: var(--primary); color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+  </style>
 </head>
-<body class="bg-slate-100 font-sans text-slate-800">
+<body>
 
-    <!-- Login / Нэвтрэх хэсэг -->
-    <div id="loginSection" class="min-h-screen flex items-center justify-center p-4">
-        <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-200 w-full max-w-md text-center">
-            <div class="w-14 h-14 bg-sky-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl shadow-lg shadow-sky-600/30">
-                <i class="fa-solid fa-user-doctor"></i>
-            </div>
-            <h2 class="text-2xl font-black text-slate-900 mb-1">Эмч нэвтрэх</h2>
-            <p class="text-xs text-slate-400 mb-6">WEISS DENTAL CLINIC систем</p>
+  <!-- 1. ADMlN LOGIN FORM -->
+  <div class="login-container" id="loginBox">
+    <div class="login-title"><i class="fa-solid fa-user-shield"></i> Админ Нэвтрэх</div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Нэвтрэх нэр</label>
+        <input type="text" id="username" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label>Нууц үг</label>
+        <input type="password" id="password" class="form-input" required>
+      </div>
+      <button type="submit" class="btn-login" id="loginBtn">Нэвтрэх</button>
+    </form>
+  </div>
 
-            <form id="loginForm" class="space-y-4">
-                <div>
-                    <input type="password" id="passwordInput" class="w-full border border-slate-200 p-3.5 rounded-xl text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 outline-none text-center tracking-widest" placeholder="Нууц үг оруулах" required />
-                </div>
-                <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-sky-600/20 text-sm">
-                    Нэвтрэх
-                </button>
-            </form>
-            <p id="loginError" class="text-xs text-rose-500 font-semibold mt-3 hidden">Нууц үг буруу байна!</p>
+  <!-- 2. MAIN ADMIN DASHBOARD -->
+  <div class="dashboard" id="dashboard">
+    <div class="top-bar">
+      <div class="admin-title"><i class="fa-solid fa-teeth"></i> WEISS DENTAL - Удирдлагын Хэсэг</div>
+      <button class="btn-refresh" onclick="fetchData()">
+        <i class="fa-solid fa-rotate"></i> Мэдээлэл Шинэчлэх
+      </button>
+    </div>
+
+    <!-- TABS NAVIGATION -->
+    <div class="tabs-header">
+      <button class="tab-btn active" onclick="switchTab(0)">
+        <i class="fa-solid fa-list-check"></i> 1. Цагийн хүсэлтүүд
+      </button>
+      <button class="tab-btn" onclick="switchTab(1)">
+        <i class="fa-solid fa-calendar-days"></i> 2. Google Calendar
+      </button>
+      <button class="tab-btn" onclick="switchTab(2)">
+        <i class="fa-solid fa-phone-volume"></i> 3. Утасны захиалга бүртгэх
+      </button>
+    </div>
+
+    <!-- TAB 1: ONLINE BOOKING REQUESTS -->
+    <div class="tab-content active" id="tab0">
+      <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Веб сайтаас ирсэн цаг захиалгын хүсэлтүүд</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Захиалсан огноо</th>
+              <th>Овог Нэр</th>
+              <th>Утас</th>
+              <th>Үйлчилгээ</th>
+              <th>Товлосон Өдөр</th>
+              <th>Товлосон Цаг</th>
+              <th>Төлөв</th>
+              <th>Үйлдэл</th>
+            </tr>
+          </thead>
+          <tbody id="requestsTable">
+            <!-- Дүүрэх хэсэг -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: GOOGLE CALENDAR EMBED -->
+    <div class="tab-content" id="tab1">
+      <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Цаг товлолтын календарь</h3>
+      <!-- Google Calendar embed iFrame -->
+      <iframe src="https://calendar.google.com/calendar/embed?src=en.mn%23holiday%40group.v.calendar.google.com&ctz=Asia%2FUlaanbaatar" 
+              style="border: 0; width: 100%; height: 600px; border-radius: 8px;" 
+              frameborder="0" 
+              scrolling="no">
+      </iframe>
+    </div>
+
+    <!-- TAB 3: PHONE BOOKING MANUAL INPUT -->
+    <div class="tab-content" id="tab2">
+      <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Утаснаас ирсэн захиалга шууд бүртгэх</h3>
+      <form id="phoneBookingForm" class="form-grid">
+        <div class="form-group">
+          <label>Овог *</label>
+          <input type="text" id="phoneSurname" class="form-input" required>
         </div>
+        <div class="form-group">
+          <label>Нэр *</label>
+          <input type="text" id="phoneName" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label>Утасны дугаар *</label>
+          <input type="tel" id="phonePhone" class="form-input" maxlength="8" inputmode="numeric" required>
+        </div>
+        <div class="form-group">
+          <label>Үйлчилгээ *</label>
+          <select id="phoneService" class="form-input" required>
+            <option value="Шүдний үзлэг">Шүдний үзлэг</option>
+            <option value="Давтан үзлэг">Давтан үзлэг</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Товлох Өдөр *</label>
+          <input type="date" id="phoneDate" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label>Товлох Цаг *</label>
+          <select id="phoneTime" class="form-input" required>
+            <option value="09:00 - 10:00">09:00 - 10:00</option>
+            <option value="10:00 - 11:00">10:00 - 11:00</option>
+            <option value="11:00 - 12:00">11:00 - 12:00</option>
+            <option value="14:00 - 15:00">14:00 - 15:00</option>
+            <option value="15:00 - 16:00">15:00 - 16:00</option>
+            <option value="16:00 - 17:00">16:00 - 17:00</option>
+            <option value="17:00 - 18:00">17:00 - 18:00</option>
+          </select>
+        </div>
+        <div class="form-group full-width">
+          <label>Тэмдэглэл</label>
+          <input type="text" id="phoneNotes" class="form-input" placeholder="Утаснаас ярьсан нэмэлт тайлбар...">
+        </div>
+        <button type="submit" class="btn-submit full-width" id="phoneSubmitBtn">
+          <i class="fa-solid fa-plus"></i> Захиалга Нэмэх
+        </button>
+      </form>
     </div>
 
-    <!-- Admin Dashboard / Админ хэсэг -->
-    <div id="adminSection" class="hidden min-h-screen pb-12">
-        <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
-            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-                <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 bg-sky-600 rounded-xl flex items-center justify-center text-white text-sm">
-                        <i class="fa-solid fa-tooth"></i>
-                    </div>
-                    <h1 class="font-bold text-slate-900 text-base">Захиалгын хяналт</h1>
-                </div>
-                <button onclick="logout()" class="text-xs font-bold text-rose-600 hover:text-rose-700 bg-rose-50 border border-rose-100 px-4 py-2 rounded-xl transition">
-                    <i class="fa-solid fa-right-from-bracket mr-1"></i> Гарах
-                </button>
-            </div>
-        </header>
+  </div>
 
-        <main class="max-w-7xl mx-auto px-6 py-8">
-            <div class="flex justify-between items-center mb-6">
-                <div>
-                    <h2 class="text-xl font-extrabold text-slate-900">Ирсэн цаг захиалгууд</h2>
-                    <p class="text-xs text-slate-400 mt-0.5">Google Sheet-ээс шууд шинэчлэгдэн харагдана</p>
-                </div>
-                <button onclick="loadBookings()" class="text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-4 py-2 rounded-xl transition shadow-sm flex items-center gap-2">
-                    <i class="fa-solid fa-rotate-right text-sky-600"></i> Шинэчлэх
-                </button>
-            </div>
+  <script>
+    // GOOGLE APPS SCRIPT URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkmTp2MkdwjqDFS0Ib_xIP716blmSlvRRYd5xxnuQmJdYCjE8Ps9oI3BNa0nkESYnK/exec';
 
-            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs text-slate-600">
-                        <thead class="bg-slate-50 text-slate-700 font-extrabold uppercase tracking-wider border-b border-slate-200">
-                            <tr>
-                                <th class="p-4">Өдөр / Цаг</th>
-                                <th class="p-4">Овог Нэр</th>
-                                <th class="p-4">Утас</th>
-                                <th class="p-4">Имэйл</th>
-                                <th class="p-4">Үйлчилгээ</th>
-                                <th class="p-4">Төлөв</th>
-                                <th class="p-4">Тэмдэглэл</th>
-                            </tr>
-                        </thead>
-                        <tbody id="bookingTableBody" class="divide-y divide-slate-100 font-medium">
-                            <tr>
-                                <td colspan="7" class="p-8 text-center text-slate-400">Мэдээлэл уншиж байна...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-    </div>
+    let currentAdminUser = '';
+    let currentAdminPass = '';
 
-    <script>
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz03I2krpgtNGSa9jvpp0WKFm89JSiWRbia12kIxf7Jz2EC1MOKF4GN0Sb-XGn-sA/exec';
-        const ADMIN_PASS = 'admin123';
+    // Tab сэлгэх функц
+    function switchTab(index) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+      
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+        contents[i].classList.toggle('active', i === index);
+      });
+    }
 
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const pass = document.getElementById('passwordInput').value;
-            if (pass === ADMIN_PASS) {
-                document.getElementById('loginSection').classList.add('hidden');
-                document.getElementById('adminSection').classList.remove('hidden');
-                loadBookings();
-            } else {
-                document.getElementById('loginError').classList.remove('hidden');
-            }
-        });
+    // Утасны дугаарт 8 оронтой тоо хязгаарлах
+    const phoneInput = document.getElementById('phonePhone');
+    phoneInput.addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 8);
+    });
 
-        function logout() {
-            document.getElementById('adminSection').classList.add('hidden');
-            document.getElementById('loginSection').classList.remove('hidden');
-            document.getElementById('passwordInput').value = '';
+    // Админ нэвтрэх
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      currentAdminUser = document.getElementById('username').value;
+      currentAdminPass = document.getElementById('password').value;
+      fetchData();
+    });
+
+    // Мэдээлэл татаж хүснэгтэд харуулах
+    function fetchData() {
+      const loginBtn = document.getElementById('loginBtn');
+      if (loginBtn) loginBtn.innerText = 'Нэвтэрч байна...';
+
+      const formData = new URLSearchParams();
+      formData.append('action', 'adminLogin');
+      formData.append('username', currentAdminUser);
+      formData.append('password', currentAdminPass);
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(res => {
+        if (res.status === 'success') {
+          document.getElementById('loginBox').style.display = 'none';
+          document.getElementById('dashboard').style.display = 'block';
+          
+          const tbody = document.getElementById('requestsTable');
+          tbody.innerHTML = '';
+
+          // Дүүргэлт
+          for (let i = 1; i < res.data.length; i++) {
+            const row = res.data[i];
+            const tr = document.createElement('tr');
+            
+            const isApproved = row[9] === 'Баталгаажсан';
+            const statusBadge = isApproved 
+              ? `<span class="badge-approved"><i class="fa-solid fa-check"></i> Баталгаажсан</span>`
+              : `<span class="badge-pending"><i class="fa-solid fa-clock"></i> Хүлээгдэж буй</span>`;
+            
+            const actionBtn = isApproved 
+              ? `-`
+              : `<button class="btn-approve" onclick="approveBooking(${i+1})">Зөвшөөрөх</button>`;
+
+            tr.innerHTML = `
+              <td>${i}</td>
+              <td>${new Date(row[0]).toLocaleDateString()}</td>
+              <td><b>${row[1]} ${row[2]}</b></td>
+              <td><a href="tel:${row[3]}">${row[3]}</a></td>
+              <td>${row[5]}</td>
+              <td>${row[6]}</td>
+              <td><b>${row[7]}</b></td>
+              <td>${statusBadge}</td>
+              <td>${actionBtn}</td>
+            `;
+            tbody.appendChild(tr);
+          }
+        } else {
+          alert(res.message);
         }
+      })
+      .catch(err => {
+        alert('Холболтын алдаа гарлаа.');
+        console.error(err);
+      })
+      .finally(() => {
+        if (loginBtn) loginBtn.innerText = 'Нэвтрэх';
+      });
+    }
 
-        function loadBookings() {
-            const tbody = document.getElementById('bookingTableBody');
-            tbody.innerHTML = '<tr><td colspan="7" class="p-8 text-center text-slate-400"><i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Мэдээлэл уншиж байна...</td></tr>';
+    // Захиалга зөвшөөрөх (Төлөв шинэчлэх)
+    function approveBooking(rowIndex) {
+      const formData = new URLSearchParams();
+      formData.append('action', 'updateStatus');
+      formData.append('rowIndex', rowIndex);
+      formData.append('status', 'Баталгаажсан');
 
-            fetch(SCRIPT_URL + '?action=getBookings')
-            .then(res => res.json())
-            .then(data => {
-                if (!data || data.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="7" class="p-8 text-center text-slate-400">Одоогоор ямар нэг захиалга ирээгүй байна.</td></tr>';
-                    return;
-                }
+      fetch(SCRIPT_URL, { method: 'POST', body: formData })
+      .then(res => res.json())
+      .then(data => {
+        alert('Захиалга баталгаажлаа!');
+        fetchData(); // Мэдээллийг дахин ачаалж шинэчлэх
+      });
+    }
 
-                tbody.innerHTML = data.map(b => `
-                    <tr class="hover:bg-slate-50 transition">
-                        <td class="p-4 font-bold text-slate-900">${b.date || ''}<br><span class="text-sky-600 font-semibold">${b.time || ''}</span></td>
-                        <td class="p-4 font-bold text-slate-800">${b.surname || ''} ${b.name || ''}</td>
-                        <td class="p-4 font-bold text-slate-700">${b.phone || ''}</td>
-                        <td class="p-4 text-slate-500">${b.email || '-'}</td>
-                        <td class="p-4"><span class="bg-sky-50 text-sky-700 border border-sky-100 px-2.5 py-1 rounded-lg text-[11px] font-bold">${b.service || ''}</span></td>
-                        <td class="p-4"><span class="bg-amber-50 text-amber-700 border border-amber-100 px-2.5 py-1 rounded-lg text-[11px] font-bold">${b.status || 'Хүлээгдэж буй'}</span></td>
-                        <td class="p-4 text-slate-500">${b.notes || '-'}</td>
-                    </tr>
-                `).join('');
-            })
-            .catch(err => {
-                tbody.innerHTML = '<tr><td colspan="7" class="p-8 text-center text-rose-500 font-bold">Захиалгын мэдээлэл татахад алдаа гарлаа. Шинэчилж үзнэ үү.</td></tr>';
-            });
-        }
-    </script>
+    // Утасны захиалгыг гараар нэмэх
+    document.getElementById('phoneBookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('phoneSubmitBtn');
+      submitBtn.disabled = true;
+
+      const formData = new URLSearchParams();
+      formData.append('action', 'patientBooking');
+      formData.append('surname', document.getElementById('phoneSurname').value);
+      formData.append('name', document.getElementById('phoneName').value);
+      formData.append('phone', document.getElementById('phonePhone').value);
+      formData.append('email', 'Утасны захиалга');
+      formData.append('service', document.getElementById('phoneService').value);
+      formData.append('date', document.getElementById('phoneDate').value);
+      formData.append('time', document.getElementById('phoneTime').value);
+      formData.append('notes', document.getElementById('phoneNotes').value);
+
+      fetch(SCRIPT_URL, { method: 'POST', body: formData })
+      .then(res => res.json())
+      .then(data => {
+        alert('Утасны захиалга амжилттай бүртгэгдлээ!');
+        document.getElementById('phoneBookingForm').reset();
+        fetchData();
+        switchTab(0); // Эхний таб руу шилжих
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+      });
+    });
+  </script>
 </body>
 </html>
