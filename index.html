@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WEISS DENTAL CLINIC - Шүдний Эмнэлэг & Цаг Захиалга</title>
+  <title>WEISS DENTAL CLINIC - Орчин Үеийн Шүдний Эмнэлэг</title>
   
-  <!-- Google Fonts & FontAwesome Icons -->
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -13,18 +13,18 @@
     :root {
       --primary: #0284c7;
       --primary-dark: #0369a1;
-      --primary-light: #e0f2fe;
+      --primary-light: #f0f9ff;
       --secondary: #0d9488;
-      --accent: #f59e0b;
+      --accent: #38bdf8;
       --dark: #0f172a;
       --gray-light: #f8fafc;
       --gray-border: #e2e8f0;
       --gray-text: #64748b;
       --white: #ffffff;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-      --shadow-lg: 0 10px 25px -5px rgba(2, 132, 199, 0.15);
-      --radius: 16px;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 10px 25px -5px rgba(2, 132, 199, 0.12);
+      --shadow-lg: 0 20px 30px -10px rgba(15, 23, 42, 0.15);
+      --radius: 20px;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -35,17 +35,20 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--gray-light);
       color: var(--dark);
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    /* HEADER / NAVBAR */
+    /* HEADER */
     header {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -55,13 +58,12 @@
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 1rem 2rem;
+      padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    /* LOGO DESIGN */
     .logo {
       display: flex;
       align-items: center;
@@ -70,30 +72,23 @@
     }
 
     .logo-icon {
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 12px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.4rem;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-      position: relative;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
     }
 
     .logo-title {
       font-weight: 800;
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       color: var(--dark);
-      letter-spacing: -0.5px;
-      line-height: 1.1;
+      line-height: 1;
     }
 
     .logo-title span {
@@ -102,73 +97,59 @@
 
     .logo-subtitle {
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--gray-text);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
+      margin-top: 3px;
     }
 
-    .nav-contact {
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 25px;
     }
 
-    .phone-badge {
-      display: flex;
+    .nav-link {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    .btn-call {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
       background: var(--primary-light);
       color: var(--primary-dark);
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 30px;
       font-weight: 700;
       font-size: 0.95rem;
       text-decoration: none;
       transition: var(--transition);
+      border: 1px solid rgba(2, 132, 199, 0.2);
     }
 
-    .phone-badge:hover {
+    .btn-call:hover {
       background: var(--primary);
       color: white;
     }
 
-    /* ADMIN BTN IN NAVBAR */
-    .admin-nav-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: #f1f5f9;
-      color: var(--gray-text);
-      padding: 8px 14px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      border: 1px solid var(--gray-border);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .admin-nav-btn:hover {
-      background: var(--dark);
-      color: white;
-      border-color: var(--dark);
-    }
-
     /* HERO SECTION */
     .hero {
-      position: relative;
-      padding: 80px 2rem;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 80px 2rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 50px;
       align-items: center;
-    }
-
-    .hero-content {
-      max-width: 560px;
     }
 
     .badge {
@@ -177,18 +158,17 @@
       gap: 8px;
       background: rgba(2, 132, 199, 0.1);
       color: var(--primary);
-      padding: 6px 14px;
-      border-radius: 20px;
+      padding: 8px 16px;
+      border-radius: 30px;
       font-size: 0.85rem;
       font-weight: 700;
       margin-bottom: 20px;
     }
 
     .hero-title {
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 800;
-      line-height: 1.2;
-      color: var(--dark);
+      line-height: 1.15;
       margin-bottom: 20px;
       letter-spacing: -1px;
     }
@@ -202,95 +182,127 @@
     .hero-desc {
       font-size: 1.1rem;
       color: var(--gray-text);
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
 
-    .hero-stats {
+    .hero-buttons {
       display: flex;
-      gap: 30px;
-      padding-top: 20px;
-      border-top: 1px solid var(--gray-border);
+      gap: 15px;
     }
 
-    .stat-item h4 {
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 16px 32px;
+      border-radius: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(2, 132, 199, 0.35);
+    }
+
+    .hero-image-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-border);
+      position: relative;
+    }
+
+    .info-box {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      background: var(--gray-light);
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .info-box i {
       font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--dark);
-    }
-
-    .stat-item p {
-      font-size: 0.85rem;
-      color: var(--gray-text);
+      color: var(--primary);
     }
 
     /* SERVICES SECTION */
     .services-section {
       background: white;
-      padding: 80px 2rem;
-      border-radius: 30px 30px 0 0;
+      padding: 100px 2rem;
+      border-radius: 40px 40px 0 0;
     }
 
     .section-header {
       text-align: center;
-      max-width: 600px;
-      margin: 0 auto 50px;
+      max-width: 650px;
+      margin: 0 auto 60px;
     }
 
     .section-title {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .section-subtitle {
       color: var(--gray-text);
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
 
     .services-grid {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
     }
 
     .service-card {
       background: var(--gray-light);
-      border: 2px solid var(--gray-border);
+      border: 1px solid var(--gray-border);
       border-radius: var(--radius);
       padding: 35px;
       transition: var(--transition);
-      cursor: pointer;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .service-card:hover {
+      transform: translateY(-8px);
       border-color: var(--primary);
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-md);
+      background: white;
     }
 
     .service-icon {
       width: 60px;
       height: 60px;
       background: white;
-      border-radius: 14px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.8rem;
       color: var(--primary);
-      margin-bottom: 20px;
       box-shadow: var(--shadow-sm);
+      margin-bottom: 25px;
     }
 
     .service-title {
       font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--dark);
+      font-weight: 800;
+      margin-bottom: 12px;
     }
 
     .service-desc {
@@ -299,25 +311,56 @@
       margin-bottom: 20px;
     }
 
-    .service-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 0.9rem;
+    .service-features {
+      list-style: none;
+      margin-bottom: 25px;
     }
 
-    /* BOOKING FORM SECTION */
+    .service-features li {
+      font-size: 0.88rem;
+      color: var(--dark);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .service-features li i {
+      color: var(--secondary);
+    }
+
+    .service-action-btn {
+      width: 100%;
+      background: white;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .service-card:hover .service-action-btn {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* BOOKING SECTION */
     .booking-section {
-      padding: 80px 2rem;
-      max-width: 800px;
+      padding: 100px 2rem;
+      max-width: 850px;
       margin: 0 auto;
     }
 
     .booking-card {
       background: white;
-      padding: 40px;
+      padding: 45px;
       border-radius: var(--radius);
       box-shadow: var(--shadow-lg);
       border: 1px solid var(--gray-border);
@@ -342,14 +385,13 @@
     .form-label {
       font-size: 0.9rem;
       font-weight: 700;
-      color: var(--dark);
     }
 
     .form-input, .form-select, .form-textarea {
       width: 100%;
-      padding: 14px 16px;
+      padding: 14px 18px;
       border: 1.5px solid var(--gray-border);
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 0.95rem;
       transition: var(--transition);
       outline: none;
@@ -359,214 +401,39 @@
     .form-input:focus, .form-select:focus, .form-textarea:focus {
       border-color: var(--primary);
       background: white;
-      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
     }
 
-    .btn-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      padding: 16px;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .btn-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
-    }
-
-    /* SUCCESS ALERT */
     .alert-success {
       display: none;
       background: #dcfce7;
       border: 1px solid #86efac;
       color: #166534;
       padding: 20px;
-      border-radius: 12px;
+      border-radius: 14px;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       font-weight: 600;
     }
 
-    /* FOOTER */
     footer {
       background: var(--dark);
       color: white;
-      padding: 40px 2rem;
+      padding: 50px 2rem;
       text-align: center;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    footer p {
-      color: var(--gray-text);
-      font-size: 0.9rem;
-    }
-
-    /* ========================================== */
-    /* ADMIN MODALS & DASHBOARD STYLES */
-    /* ========================================== */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-card {
-      background: white;
-      width: 100%;
-      max-width: 450px;
-      border-radius: var(--radius);
-      padding: 35px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      position: relative;
-      animation: modalFadeIn 0.3s ease;
-    }
-
-    .modal-card.admin-dashboard {
-      max-width: 1000px;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--gray-light);
-      border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gray-text);
-      transition: var(--transition);
-    }
-
-    .modal-close:hover {
-      background: #fee2e2;
-      color: #ef4444;
-    }
-
-    .admin-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--gray-border);
-      margin-bottom: 20px;
-    }
-
-    .admin-title {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--dark);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* TABLE STYLES FOR ADMIN */
-    .table-container {
-      overflow-y: auto;
-      flex: 1;
-    }
-
-    .admin-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.9rem;
-    }
-
-    .admin-table th {
-      background: var(--gray-light);
-      padding: 12px 16px;
-      color: var(--gray-text);
-      font-weight: 700;
-      border-bottom: 2px solid var(--gray-border);
-      position: sticky;
-      top: 0;
-    }
-
-    .admin-table td {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--gray-border);
-      color: var(--dark);
-    }
-
-    .status-pill {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .status-pending { background: #fef3c7; color: #d97706; }
-    .status-confirmed { background: #dcfce7; color: #15803d; }
-    .status-cancelled { background: #fee2e2; color: #b91c1c; }
-
-    .action-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      border-radius: 6px;
-      transition: var(--transition);
-      font-size: 1rem;
-    }
-
-    .action-btn.confirm { color: #16a34a; }
-    .action-btn.confirm:hover { background: #dcfce7; }
-    .action-btn.cancel { color: #dc2626; }
-    .action-btn.cancel:hover { background: #fee2e2; }
-
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
-        padding: 40px 1.5rem;
         text-align: center;
       }
-      .hero-content {
-        max-width: 100%;
-      }
-      .hero-title {
-        font-size: 2.2rem;
-      }
-      .hero-stats {
+      .hero-buttons {
         justify-content: center;
       }
-      .services-grid {
-        grid-template-columns: 1fr;
+      .nav-links {
+        display: none;
       }
       .form-grid {
         grid-template-columns: 1fr;
@@ -575,153 +442,206 @@
         grid-column: span 1;
       }
       .booking-card {
-        padding: 24px;
+        padding: 25px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER / NAVBAR -->
+  <!-- HEADER -->
   <header>
     <div class="nav-container">
-      <div class="logo">
-        <div class="logo-icon">
-          <i class="fa-solid fa-tooth"></i>
-        </div>
-        <div class="logo-text">
+      <a href="#" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+        <div>
           <div class="logo-title">WEISS <span>DENTAL</span></div>
           <div class="logo-subtitle">CLINIC & SURGERY</div>
         </div>
-      </div>
+      </a>
       
-      <div class="nav-contact">
-        <a href="tel:99262480" class="phone-badge">
+      <div class="nav-links">
+        <a href="#services" class="nav-link">Үйлчилгээ</a>
+        <a href="#booking" class="nav-link">Цаг Захиалах</a>
+        <a href="tel:99262480" class="btn-call">
           <i class="fa-solid fa-phone"></i>
           <span>99262480</span>
         </a>
-        
-        <!-- АДМИН ХЭСЭГТ НЭВТРЭХ ЦЭВЭРХЭН ТОВЧ -->
-        <button class="admin-nav-btn" onclick="openLoginModal()" title="Админ нэвтрэх">
-          <i class="fa-solid fa-lock"></i>
-          <span>Админ</span>
-        </button>
       </div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <div class="hero-content">
+    <div>
       <div class="badge">
         <i class="fa-solid fa-sparkles"></i>
-        Орчин үеийн шүдний эмнэлэг
+        Орчин Үеийн Шүдний Эмнэлэг
       </div>
-      <h1 class="hero-title">Таны инээмсэглэл <span>Манай бахархал</span></h1>
+      <h1 class="hero-title">Таны Инээмсэглэл <span>Манай Бахархал</span></h1>
       <p class="hero-desc">
-        Аюулгүй, чанартай бөгөөд өвдөлтгүй эмчилгээг танд санал болгож байна. Та онлайнаар цаг захиалан дараалалгүй үйлчлүүлээрэй.
+        Аюулгүй, чанартай бөгөөд бүрэн ариутгагдсан орчинд мэргэжлийн эмч нар таны шүдийг эмчилж байна.
       </p>
-      <a href="#booking-form" class="btn-submit" style="text-decoration: none; width: fit-content; padding: 14px 28px;">
-        <i class="fa-regular fa-calendar-check"></i> Цаг Захиалах
-      </a>
+      <div class="hero-buttons">
+        <a href="#booking" class="btn-primary">
+          <i class="fa-regular fa-calendar-check"></i> Цаг Захиалах
+        </a>
+      </div>
     </div>
 
-    <div class="hero-stats-container">
-      <div class="hero-stats">
-        <div class="stat-item">
-          <h4>100%</h4>
-          <p>Ариутгал</p>
+    <div class="hero-image-card">
+      <div class="info-box">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+          <h4 style="font-weight: 700;">100% Ариутгал</h4>
+          <p style="font-size: 0.85rem; color: var(--gray-text);">Олон улсын стандартад нийцсэн ариутгалын систем</p>
         </div>
-        <div class="stat-item">
-          <h4>5.0 ★</h4>
-          <p>Сэтгэл ханамж</p>
+      </div>
+      <div class="info-box">
+        <i class="fa-solid fa-user-doctor"></i>
+        <div>
+          <h4 style="font-weight: 700;">Мэргэжлийн Эмч Нар</h4>
+          <p style="font-size: 0.85rem; color: var(--gray-text);">Туршлагатай хамт олон таны үйлчилгээнд</p>
         </div>
-        <div class="stat-item">
-          <h4>99262480</h4>
-          <p>Холбогдох утас</p>
+      </div>
+      <div class="info-box" style="margin-bottom: 0;">
+        <i class="fa-solid fa-clock"></i>
+        <div>
+          <h4 style="font-weight: 700;">Цагийн Хуваарь</h4>
+          <p style="font-size: 0.85rem; color: var(--gray-text);">Даваа - Бямба: 09:00 - 18:00</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SERVICES SECTION -->
-  <section class="services-section">
+  <section class="services-section" id="services">
     <div class="section-header">
-      <h2 class="section-title">Манай Үйлчилгээ</h2>
-      <p class="section-subtitle">Та дараах 2 үндсэн үйлчилгээнээс сонгон цагаа товлох боломжтой.</p>
+      <h2 class="section-title">Манай Үйлчилгээнүүд</h2>
+      <p class="section-subtitle">Та өөрт шаардлагатай үйлчилгээг сонгон цаг товлох боломжтой.</p>
     </div>
 
     <div class="services-grid">
-      <!-- Service 1 -->
-      <div class="service-card" onclick="selectService('Шүдний үзлэг')">
-        <div class="service-icon">
-          <i class="fa-solid fa-microscope"></i>
+      <!-- 1. Үзлэг ба Оношилгоо -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon"><i class="fa-solid fa-microscope"></i></div>
+          <h3 class="service-title">Шүдний Үзлэг & Оношилгоо</h3>
+          <p class="service-desc">
+            Амны хөндийн иж бүрэн үзлэг хийж, шүдний тусламж үйлчилгээний нарийн төлөвлөгөө боловсруулна.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Анхан шатны үзлэг</li>
+            <li><i class="fa-solid fa-check"></i> Зөвлөгөө мэдээлэл</li>
+          </ul>
         </div>
-        <h3 class="service-title">Шүдний үзлэг</h3>
-        <p class="service-desc">
-          Анхан шатны иж бүрэн үзлэг, оношилгоо, зөвлөгөө өгөх болон эмчилгээний төлөвлөгөө гаргах үйлчилгээ.
-        </p>
-        <div class="service-btn">
-          <span>Сонгоод цаг авах</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
+        <button class="service-action-btn" onclick="selectService('Шүдний үзлэг')">
+          Цаг Захиалах <i class="fa-solid fa-arrow-right"></i>
+        </button>
       </div>
 
-      <!-- Service 2 -->
-      <div class="service-card" onclick="selectService('Давтан үзлэг')">
-        <div class="service-icon">
-          <i class="fa-solid fa-user-doctor"></i>
+      <!-- 2. Цэвэрлэгээ & Чулуу авгалт -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon"><i class="fa-solid fa-sparkles"></i></div>
+          <h3 class="service-title">Цэвэрлэгээ & Чулуу Авгалт</h3>
+          <p class="service-desc">
+            Ультрасоник төхөөрөмжөөр шүдний өнгөр болон хатуу чулууг өвдөлтгүйгээр арилгах үйлчилгээ.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Шүдний өнгөр арилгах</li>
+            <li><i class="fa-solid fa-check"></i> Буйлны эрүүл мэнд</li>
+          </ul>
         </div>
-        <h3 class="service-title">Давтан үзлэг</h3>
-        <p class="service-desc">
-          Эмчилгээний дараах хяналт, давтан эмчилгээ хийлгэх болон зөвлөгөө авах өвчтөнүүдэд зориулсан цаг.
-        </p>
-        <div class="service-btn">
-          <span>Сонгоод цаг авах</span>
-          <i class="fa-solid fa-arrow-right"></i>
+        <button class="service-action-btn" onclick="selectService('Цэвэрлэгээ & Чулуу авгалт')">
+          Цаг Захиалах <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- 3. Шүдний Пломб ба Эмчилгээ -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
+          <h3 class="service-title">Пломб & Нөхөн Сэргээлт</h3>
+          <p class="service-desc">
+            Шүдний гэмтэл болон сувгийн эмчилгээг сүүлийн үеийн чанартай материалаар засна.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Гоо сайхны ломбо</li>
+            <li><i class="fa-solid fa-check"></i> Сувгийн эмчилгээ</li>
+          </ul>
         </div>
+        <button class="service-action-btn" onclick="selectService('Пломб & Эмчилгээ')">
+          Цаг Захиалах <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- 4. Шүд Цагаанруулах -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3 class="service-title">Шүд Цагаанруулах</h3>
+          <p class="service-desc">
+            Шүдний пааланг гэмтээхгүйгээр өнгийг нь сэргээж цагаан болгох аюулгүй лазер эмчилгээ.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Шууд үр дүн</li>
+            <li><i class="fa-solid fa-check"></i> Пааланг гэмтээхгүй</li>
+          </ul>
+        </div>
+        <button class="service-action-btn" onclick="selectService('Шүд цагаанруулах')">
+          Цаг Захиалах <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- 5. Давтан Үзлэг -->
+      <div class="service-card">
+        <div>
+          <div class="service-icon"><i class="fa-solid fa-user-doctor"></i></div>
+          <h3 class="service-title">Давтан Үзлэг</h3>
+          <p class="service-desc">
+            Өмнөх эмчилгээний явцыг шалгах болон эмчийн дараагийн хяналтад хамрагдах үйлчилгээ.
+          </p>
+          <ul class="service-features">
+            <li><i class="fa-solid fa-check"></i> Эмчилгээний хяналт</li>
+            <li><i class="fa-solid fa-check"></i> Эмчийн зөвлөгөө</li>
+          </ul>
+        </div>
+        <button class="service-action-btn" onclick="selectService('Давтан үзлэг')">
+          Цаг Захиалах <i class="fa-solid fa-arrow-right"></i>
+        </button>
       </div>
     </div>
   </section>
 
   <!-- BOOKING FORM SECTION -->
-  <section class="booking-section" id="booking-form">
+  <section class="booking-section" id="booking">
     <div class="booking-card">
       <div class="section-header" style="margin-bottom: 30px;">
-        <h2 class="section-title" style="font-size: 1.8rem;">Онлайн Цаг Захиалга</h2>
-        <p class="section-subtitle">Мэдээллээ үнэн зөв зааж өгнө үү</p>
+        <h2 class="section-title" style="font-size: 1.8rem;">Онлайн Цаг Захиалах</h2>
+        <p class="section-subtitle">Мэдээллээ үнэн зөв бөглөнө үү</p>
       </div>
 
       <div id="successAlert" class="alert-success">
-        <i class="fa-solid fa-circle-check" style="font-size: 1.5rem; margin-bottom: 8px;"></i><br>
-        Таны цаг захиалах хүсэлт амжилттай илгээгдлээ!<br>Бид тун удахгүй тан руу холбогдох болно.
+        <i class="fa-solid fa-circle-check" style="font-size: 1.8rem; margin-bottom: 8px;"></i><br>
+        Таны цаг захиалах хүсэлт амжилттай илгээгдлээ!<br>Google Sheet, Gmail болон Google Calendar дээр амжилттай бүртгэгдлээ.
       </div>
 
       <form id="appointmentForm">
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label">Овог *</label>
-            <input type="text" id="surname" class="form-input" placeholder="Овог заах" required>
+            <input type="text" id="surname" class="form-input" placeholder="Овог оруулна уу" required>
           </div>
 
           <div class="form-group">
             <label class="form-label">Нэр *</label>
-            <input type="text" id="name" class="form-input" placeholder="Нэр заах" required>
+            <input type="text" id="name" class="form-input" placeholder="Нэр оруулна уу" required>
           </div>
 
-          <!-- Утасны дугаар: 8 оронтой, тоон гарагтай -->
           <div class="form-group">
             <label class="form-label">Утасны дугаар *</label>
-            <input 
-              type="tel" 
-              id="phone" 
-              class="form-input" 
-              placeholder="8811xxxx" 
-              inputmode="numeric" 
-              pattern="[0-9]{8}" 
-              maxlength="8" 
-              required
-            >
+            <input type="tel" id="phone" class="form-input" placeholder="8811xxxx" inputmode="numeric" maxlength="8" required>
           </div>
 
           <div class="form-group">
@@ -733,7 +653,10 @@
             <label class="form-label">Үйлчилгээ сонгох *</label>
             <select id="service" class="form-select" required>
               <option value="">-- Сонгох --</option>
-              <option value="Шүдний үзлэг">Шүдний үзлэг</option>
+              <option value="Шүдний үзлэг">Шүдний үзлэг & Оношилгоо</option>
+              <option value="Цэвэрлэгээ & Чулуу авгалт">Цэвэрлэгээ & Чулуу авгалт</option>
+              <option value="Пломб & Эмчилгээ">Пломб & Нөхөн сэргээлт</option>
+              <option value="Шүд цагаанруулах">Шүд цагаанруулах</option>
               <option value="Давтан үзлэг">Давтан үзлэг</option>
             </select>
           </div>
@@ -759,11 +682,11 @@
 
           <div class="form-group full">
             <label class="form-label">Нэмэлт тайлбар / Зовиур</label>
-            <textarea id="notes" class="form-textarea" rows="3" placeholder="Танд ямар нэгэн зовиур байгаа бол бичнэ үү..."></textarea>
+            <textarea id="notes" class="form-textarea" rows="3" placeholder="Ямар нэгэн зовиур байгаа бол бичнэ үү..."></textarea>
           </div>
         </div>
 
-        <button type="submit" id="submitBtn" class="btn-submit" style="margin-top: 25px;">
+        <button type="submit" id="submitBtn" class="btn-primary" style="width: 100%; margin-top: 25px; justify-content: center;">
           <i class="fa-solid fa-paper-plane"></i> Цаг Захиалах Хүсэлт Илгээх
         </button>
       </form>
@@ -773,117 +696,45 @@
   <!-- FOOTER -->
   <footer>
     <p>© 2026 WEISS DENTAL CLINIC. Бүх эрх хуулиар хамгаалагдсан.</p>
-    <p style="margin-top: 8px;">Холбоо барих: 99262480</p>
+    <p style="margin-top: 8px; color: var(--gray-text);">Утас: 99262480 | Цагийн хуваарь: 09:00 - 18:00</p>
   </footer>
 
-  <!-- ========================================== -->
-  <!-- MODAL 1: ADMIN LOGIN -->
-  <!-- ========================================== -->
-  <div class="modal-overlay" id="loginModal">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeModal('loginModal')"><i class="fa-solid fa-xmark"></i></button>
-      <div style="text-align: center; margin-bottom: 25px;">
-        <div class="logo-icon" style="margin: 0 auto 15px auto;">
-          <i class="fa-solid fa-user-shield"></i>
-        </div>
-        <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--dark);">Админ нэвтрэх</h3>
-        <p style="font-size: 0.85rem; color: var(--gray-text);">Системд нэвтрэх нууц үгээ оруулна уу.</p>
-      </div>
-
-      <form id="adminLoginForm">
-        <div class="form-group" style="margin-bottom: 20px;">
-          <label class="form-label">Нууц үг</label>
-          <input type="password" id="adminPassword" class="form-input" placeholder="••••••••" required>
-        </div>
-        <button type="submit" class="btn-submit">
-          <i class="fa-solid fa-right-to-bracket"></i> Нэвтрэх
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- MODAL 2: ADMIN DASHBOARD -->
-  <!-- ========================================== -->
-  <div class="modal-overlay" id="adminModal">
-    <div class="modal-card admin-dashboard">
-      <button class="modal-close" onclick="closeModal('adminModal')"><i class="fa-solid fa-xmark"></i></button>
-      
-      <div class="admin-header">
-        <div class="admin-title">
-          <i class="fa-solid fa-calendar-days" style="color: var(--primary);"></i>
-          Захиалгын удирдлага
-        </div>
-        <button class="phone-badge" onclick="loadBookings()" style="cursor: pointer; border: none;">
-          <i class="fa-solid fa-rotate-right"></i> Шинэчлэх
-        </button>
-      </div>
-
-      <div class="table-container">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Нэр</th>
-              <th>Утас</th>
-              <th>Үйлчилгээ</th>
-              <th>Огноо & Цаг</th>
-              <th>Төлөв</th>
-              <th>Үйлдэл</th>
-            </tr>
-          </thead>
-          <tbody id="adminTableBody">
-            <!-- Дүүргэгдэх өгөгдөл -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- SCRIPT INTEGRATION -->
   <script>
-    // Google Apps Script-ийн URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkmTp2MkdwjqDFS0Ib_xIP716blmSlvRRYd5xxnuQmJdYCjE8Ps9oI3BNa0nkESYnK/exec';
-    
-    // Админ нэвтрэх нууц үг (Эндээс сольж болно)
-    const ADMIN_PASSWORD = '1234'; 
+    // ТАНЫ ШИНЭ GOOGLE APPS SCRIPT URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFYkIB-C16Fti-OOuggsU2fNdfgAbgHPoDm6BMxor160WiAEP0F39kanm7OecLUxjv/exec';
 
-    // Огнооны хамгийн бага утгыг өнөөдрийн өдөр болгож тохируулах
+    // Огнооны хамгийн бага утгыг өнөөдрөөр тохируулах
     document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-    // Үйлчилгээ сонгоход формоос автоматаар сонгох
+    // Үйлчилгээний картаас "Цаг авах" дарахад автоматаар сонгох
     function selectService(serviceName) {
       document.getElementById('service').value = serviceName;
-      document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Утасны дугаарт зөвхөн 8 оронтой тоо оруулдаг болгох
-    const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function (e) {
-      this.value = this.value.replace(/[^0-9]/g, '');
-      if (this.value.length > 8) {
-        this.value = this.value.slice(0, 8);
-      }
+    // Утасны дугаарт зөвхөн 8 оронтой тоо оруулах
+    document.getElementById('phone').addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 8);
     });
 
-    // Захиалга илгээх үйлдэл
+    // Форм илгээх үйлдэл
     document.getElementById('appointmentForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      if (phoneInput.value.length !== 8) {
-        alert('Утасны дугаар яг 8 оронтой тоо байх ёстой!');
-        phoneInput.focus();
+      const phone = document.getElementById('phone').value;
+      if (phone.length !== 8) {
+        alert('Утасны дугаар 8 оронтой байх ёстой!');
         return;
       }
-      
+
       const submitBtn = document.getElementById('submitBtn');
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Илгээж байна...';
 
       const formData = new URLSearchParams();
-      formData.append('action', 'patientBooking');
       formData.append('surname', document.getElementById('surname').value);
       formData.append('name', document.getElementById('name').value);
-      formData.append('phone', phoneInput.value);
+      formData.append('phone', phone);
       formData.append('email', document.getElementById('email').value);
       formData.append('service', document.getElementById('service').value);
       formData.append('date', document.getElementById('date').value);
@@ -896,7 +747,7 @@
       })
       .then(res => res.json())
       .then(data => {
-        if(data.status === 'success') {
+        if (data.status === 'success') {
           document.getElementById('successAlert').style.display = 'block';
           document.getElementById('appointmentForm').reset();
           document.getElementById('successAlert').scrollIntoView({ behavior: 'smooth' });
@@ -905,106 +756,13 @@
         }
       })
       .catch(err => {
-        alert('Алдаа гарлаа. Та интернэт холболтоо шалгаад дахин оролдоно уу.');
-        console.error(err);
+        alert('Алдаа гарлаа. Сүлжээний холболтоо шалгана уу.');
       })
       .finally(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Цаг Захиалах Хүсэлт Илгээх';
       });
     });
-
-    /* ========================================== */
-    /* ADMIN LOGIC & FUNCTIONS */
-    /* ========================================== */
-    function openLoginModal() {
-      document.getElementById('loginModal').style.display = 'flex';
-    }
-
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
-    }
-
-    // Нэвтрэх форм
-    document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const pwd = document.getElementById('adminPassword').value;
-      if (pwd === ADMIN_PASSWORD) {
-        closeModal('loginModal');
-        document.getElementById('adminPassword').value = '';
-        document.getElementById('adminModal').style.display = 'flex';
-        loadBookings();
-      } else {
-        alert('Нууц үг буруу байна!');
-      }
-    });
-
-    // Захиалгуудыг татах
-    function loadBookings() {
-      const tbody = document.getElementById('adminTableBody');
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 20px;"><i class="fa-solid fa-spinner fa-spin"></i> Ачаалж байна...</td></tr>';
-
-      fetch(`${SCRIPT_URL}?action=getBookings`)
-      .then(res => res.json())
-      .then(data => {
-        tbody.innerHTML = '';
-        if (data.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--gray-text);">Одоогоор цаг захиалга алга байна.</td></tr>';
-          return;
-        }
-
-        data.forEach(item => {
-          let statusClass = 'status-pending';
-          let statusText = 'Хүлээгдэж буй';
-          
-          if(item.status === 'Confirmed') {
-            statusClass = 'status-confirmed';
-            statusText = 'Баталгаажсан';
-          } else if(item.status === 'Cancelled') {
-            statusClass = 'status-cancelled';
-            statusText = 'Цуцлагдсан';
-          }
-
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td><strong>${item.surname || ''} ${item.name}</strong></td>
-            <td><a href="tel:${item.phone}" style="color: var(--primary); text-decoration: none;">${item.phone}</a></td>
-            <td>${item.service}</td>
-            <td>${item.date}<br><small style="color: var(--gray-text);">${item.time}</small></td>
-            <td><span class="status-pill ${statusClass}">${statusText}</span></td>
-            <td>
-              <button class="action-btn confirm" title="Баталгаажуулах" onclick="updateStatus('${item.id}', 'Confirmed')"><i class="fa-solid fa-check"></i></button>
-              <button class="action-btn cancel" title="Цуцлах" onclick="updateStatus('${item.id}', 'Cancelled')"><i class="fa-solid fa-xmark"></i></button>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        });
-      })
-      .catch(err => {
-        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: red;">Мэдээлэл ачаалахад алдаа гарлаа.</td></tr>';
-      });
-    }
-
-    // Төлөв шинэчлэх
-    function updateStatus(id, status) {
-      const formData = new URLSearchParams();
-      formData.append('action', 'updateStatus');
-      formData.append('id', id);
-      formData.append('status', status);
-
-      fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: formData
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          loadBookings();
-        } else {
-          alert('Алдаа гарлаа!');
-        }
-      });
-    }
   </script>
 </body>
 </html>
