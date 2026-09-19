@@ -32,7 +32,7 @@
         .cta-btn:hover { background: var(--primary-dark); }
 
         /* Hero Section */
-        .hero { background: linear-gradient(135sdeg, rgba(2,132,199,0.05) 0%, rgba(56,189,248,0.1) 100%); padding: 5rem 2rem; text-align: center; }
+        .hero { background: linear-gradient(135deg, rgba(2,132,199,0.05) 0%, rgba(56,189,248,0.1) 100%); padding: 5rem 2rem; text-align: center; }
         .hero-container { max-width: 800px; margin: 0 auto; }
         .hero h1 { font-size: 3rem; color: var(--text-dark); margin-bottom: 1rem; font-weight: 700; }
         .hero p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem; }
@@ -64,7 +64,7 @@
         .success-msg { background: #d1fae5; color: #065f46; }
         .error-msg { background: #fee2e2; color: #991b1b; }
 
-        /* Footer / Contact Info */
+        /* Footer / Contact */
         footer { background: var(--text-dark); color: var(--white); padding: 4rem 2rem 2rem; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
         .footer-col h4 { margin-bottom: 1.2rem; font-size: 1.2rem; color: var(--accent); }
@@ -148,7 +148,7 @@
     <!-- Booking Section -->
     <section id="booking" class="booking-section">
         <div class="booking-container">
-            <h2 class="section-title" style="margin-bottom: 1.5rem;">Цаг захиалэх хүсэлт</h2>
+            <h2 class="section-title" style="margin-bottom: 1.5rem;">Цаг захиалгын хүсэлт</h2>
             <form id="bookingForm">
                 <div class="form-row">
                     <div class="form-group">
@@ -241,8 +241,8 @@
     </footer>
 
     <script>
-        // Доорх script-д өөрийн үүсгэсэн Google Apps Script Web App URL-аа оруулна уу
-        const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+        // Таны оруулсан Google Apps Script Web App URL
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyP6-yHJ13HN4SZVBO0FhWIddRgcHvxOF5yeGepkQUtoeyi0gBd7CevJfZFQ-zu_hFe/exec";
 
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -276,7 +276,7 @@
                 loading.style.display = 'none';
                 responseMsg.style.display = 'block';
                 responseMsg.className = 'success-msg';
-                responseMsg.innerHTML = 'Таны цаг захиалгын хүсэлт амжилттай илгээгдлээ! Имэйл хаягаа шалгана уу.';
+                responseMsg.innerHTML = 'Таны цаг захиалгын хүсэлт эмч рүү амжилттай илгээгдлээ!';
                 document.getElementById('bookingForm').reset();
                 submitBtn.style.display = 'block';
             })
