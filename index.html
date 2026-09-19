@@ -351,7 +351,7 @@
       color: white;
     }
 
-    /* LOCATION SECTION (NEW) */
+    /* LOCATION SECTION */
     .location-section {
       max-width: 1200px;
       margin: 0 auto;
@@ -804,7 +804,7 @@
 
   <script>
     // Таны шинэчилсэн Google Apps Script URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzSWpXoaw5dDFkQs0JBfZ2Qg0hsQWV8O-gpmUQ-_aBpBG1bTQ7itAVXw6DkbluWp33K/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxIUeDtIj2235u2F2RxZ6Xv1JcT0aJ-SNBLl_xcw7KyZA0482b0IsVZGoWyWl85wF2O/exec';
 
     document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
@@ -842,17 +842,13 @@
 
       fetch(SCRIPT_URL, {
         method: 'POST',
+        mode: 'no-cors',
         body: formData
       })
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          document.getElementById('successAlert').style.display = 'block';
-          document.getElementById('appointmentForm').reset();
-          document.getElementById('successAlert').scrollIntoView({ behavior: 'smooth' });
-        } else {
-          alert('Алдаа гарлаа: ' + data.message);
-        }
+      .then(() => {
+        document.getElementById('successAlert').style.display = 'block';
+        document.getElementById('appointmentForm').reset();
+        document.getElementById('successAlert').scrollIntoView({ behavior: 'smooth' });
       })
       .catch(err => {
         alert('Алдаа гарлаа. Сүлжээний холболтоо шалгана уу.');
