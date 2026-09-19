@@ -678,7 +678,7 @@
     </div>
   </section>
 
-  <!-- LOCATION SECTION (NEW) -->
+  <!-- LOCATION SECTION -->
   <section class="location-section" id="location">
     <div class="location-grid">
       <div class="location-info">
@@ -687,7 +687,7 @@
           <i class="fa-solid fa-location-dot"></i>
           <div>
             <strong>Хаяг:</strong>
-            <p style="color: var(--gray-text); font-size: 0.95rem;">Улаанбаатар хот, Сүхбаатар дүүрэг (Байршлын дэлгэрэнгүй хаягаа энд бичнэ үү)</p>
+            <p style="color: var(--gray-text); font-size: 0.95rem;">Улаанбаатар хот, Сүхбаатар дүүрэг</p>
           </div>
         </div>
         <div class="location-detail">
@@ -723,7 +723,7 @@
 
       <div id="successAlert" class="alert-success">
         <i class="fa-solid fa-circle-check" style="font-size: 1.8rem; margin-bottom: 8px;"></i><br>
-        Таны цаг захиалах хүсэлт амжилттай илгээгдлээ!<br>Google Sheet, Gmail болон Google Calendar дээр амжилттай бүртгэгдлээ.
+        Таны цаг захиалах хүсэлт амжилттай илгээгдлээ!<br>Таны имэйл болон систем рүү мэдээлэл хүргэгдлээ.
       </div>
 
       <form id="appointmentForm">
@@ -803,7 +803,8 @@
   </footer>
 
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzkEvXD3SrhCK6OtNE8eHGMb0oUO_cP6dJsSTmZlLnVmO2BROdESCkUcqboW6gt5BN0/exec';
+    // Таны шинэчилсэн Google Apps Script URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzSWpXoaw5dDFkQs0JBfZ2Qg0hsQWV8O-gpmUQ-_aBpBG1bTQ7itAVXw6DkbluWp33K/exec';
 
     document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
