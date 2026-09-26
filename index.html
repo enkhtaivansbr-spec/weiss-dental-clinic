@@ -32,9 +32,9 @@
         header { background: rgba(11, 19, 43, 0.85); backdrop-filter: blur(12px); box-shadow: 0 1px 3px rgba(0,0,0,0.3); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; }
         
-        /* Алтан шаргал өнгөтэй лого */
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--accent-gold); display: flex; align-items: center; gap: 0.6rem; text-decoration: none; letter-spacing: -0.5px; }
-        .logo i { background: rgba(212, 175, 55, 0.15); padding: 9px; border-radius: 12px; color: var(--accent-gold); border: 1px solid rgba(212, 175, 55, 0.3); }
+        /* Зураг логоны загвар */
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 45px; width: auto; object-fit: contain; }
         
         .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
@@ -93,7 +93,10 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo"><i class="fa-solid fa-tooth"></i> Weiss Dental Clinic</a>
+            <!-- Энд зурган логог байрлуулав -->
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Weiss Dental Clinic Logo">
+            </a>
             <ul class="nav-links">
                 <li><a href="#booking">Цаг захиалах</a></li>
                 <li><a href="#contact">Холбоо барих</a></li>
@@ -197,12 +200,13 @@
             <div class="footer-col">
                 <h4 style="color: var(--accent-gold);">Холбоо барих</h4>
                 <p>Утас: <a href="tel:99262480" class="contact-link"><i class="fa-solid fa-phone"></i> 99262480</a></p>
+                 <a href="tel: 77710800 " class="contact-link"><i class="fa-solid fa-phone"></i> 77710800 </a></p>
                 <p>Имэйл: enkhtaivansbr@gmail.com</p>
                 <p>Ажиллах цаг: Өдөр бүр 09:00 - 19:00</p>
             </div>
             <div class="footer-col">
                 <h4 style="color: var(--accent-gold);">Байршил</h4>
-                <p>Манай эмнэлгийн байршилтай танилцах бол доорх холбоосоор орно уу:</p>
+                <p>Хан-Уул дүүрэг, 3-р хороо, Алтаргана хотхон, 44Г байр,, Вайсс шүдний эмнэлэг:</p>
                 <a href="https://maps.app.goo.gl/SJAZ8wfVbgFMEq398" target="_blank" class="contact-link"><i class="fa-solid fa-map-location-dot"></i> Google Map дээр нээх</a>
             </div>
         </div>
